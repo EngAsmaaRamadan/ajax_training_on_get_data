@@ -108,6 +108,7 @@ delayLog('Hello')
 });
 */
 
+/*
 delayLog('Hello 1').then(function(res){
 	console.log(res);
 	return delayLog('Hello 2');
@@ -126,3 +127,29 @@ delayLog('Hello 1').then(function(res){
 .catch(function(msg){
 	console.log(msg);
 });
+*/
+
+/*
+let myPromise = new Promise(function(resolve,reject){
+	let xhr = new XMLHttpRequest();
+	xhr.open('GET','https://jsonplaceholder.typicode.com/posts');
+	xhr.onload = function(){
+		if(xhr.status == 200){
+			resolve(JSON.parse(xhr.responseText));
+		}else{
+			reject('Error');
+		}
+	};
+	xhr.send();
+});
+
+myPromise.then(function(res){
+	console.log(res);
+}).catch(function(msg){
+	console.log(msg);
+});
+*/
+
+function getDataByJQuery2(){
+	
+}
