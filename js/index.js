@@ -151,5 +151,49 @@ myPromise.then(function(res){
 */
 
 function getDataByJQuery2(){
-	
+	$.ajax({
+		url:'https://jsonplaceholder.typicode.com/users',//why error???
+		type:'GET',
+		data:'',
+		success:function(res){
+			console.log(res);
+		},
+		error:function(res){
+			console.log(res);
+		},
+	}).then(function(){
+		console.log('done');
+	});
 }
+
+/*
+$.ajax({
+		url:'https://jsonplaceholder.typicode.com/users',
+		type:'GET',
+		data:'',
+		success:function(res){
+			console.log(res);
+		},
+		error:function(res){
+			console.log(res);
+		},
+	}).then(function(){
+		console.log('done');
+	});
+	*/
+
+function fetchFn(){
+	fetch("https://jsonplaceholder.typicode.com/users").then(function(data){
+		console.log(data);
+		return data.json();
+	}).then(function(res){
+		console.log(res);
+	});
+}
+
+fetch("https://jsonplaceholder.typicode.com/users").then(function(data){
+		console.log(data);
+		return data.json();
+	}).then(function(res){
+		console.log(res);
+	});
