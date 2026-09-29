@@ -28,7 +28,7 @@ function getDataByJQuery(){
 		error:function(error){
 			console.log(error);
 		},
-	});
+	}); 
 	console.log(myData);
 }
 
