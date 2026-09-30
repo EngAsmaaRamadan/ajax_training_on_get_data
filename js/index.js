@@ -181,9 +181,25 @@ $.ajax({
 		console.log('done');
 	});
 	*/
-
+/*
+$.ajax({
+		url:'https://jsonplaceholder.typicode.com/posts',
+		type:'GET',
+		data:{
+			userId:1//data in body allowed in ajax
+		},
+		success:function(res){
+			console.log(res);
+		},
+		error:function(res){
+			console.log(res);
+		},
+	}).then(function(){
+		console.log('done');
+	});
+*/
 function fetchFn(){
-	fetch("https://jsonplaceholder.typicode.com/users").then(function(data){
+	fetch("https://jsonplaceholder.typicode.com/posts").then(function(data){
 		console.log(data);
 		return data.json();
 	}).then(function(res){
@@ -191,9 +207,91 @@ function fetchFn(){
 	});
 }
 
-fetch("https://jsonplaceholder.typicode.com/users").then(function(data){
+function fetchFirstPost(){
+	fetch("https://jsonplaceholder.typicode.com/posts?userId=2").then(function(data){
 		console.log(data);
 		return data.json();
 	}).then(function(res){
 		console.log(res);
 	});
+}
+/*
+fetch("https://jsonplaceholder.typicode.com/posts" , {
+	//method:"POST",
+	headers:{
+		"Content-Type" : "application/json"
+	},
+	/*body:{ //error because method is get not post
+		userId:1
+	}*//*
+}).then((data) =>  data.json()
+		// console.log(data);
+	).then(function(res){
+		console.log(res);
+	});
+*/
+function getData3(){
+		let myData = [];
+		if(myData.length > 0){
+			return Promise.resolve(myData);
+		}else{
+			return Promise.reject("Error")
+		}
+}
+
+async function getData4(){
+		let myData = [];
+		if(myData.length > 0){
+			return myData;
+		}else{
+			throw Error("Errors");
+		}
+}
+/*
+getData3().then(function(data){
+	console.log(data);
+	console.log('ok');
+}).catch(function(msg){
+	console.log(msg);
+	console.log('no');
+});*/
+
+/*
+getData4().then(function(data){
+	console.log(data);
+	console.log('ok');
+}).catch(function(msg){
+	console.log(msg);
+	console.log('no');
+});
+*/
+
+let myPromise = new Promise(function(resolve,reject){
+	setTimeout(function(){
+		resolve("Hello 2");
+	},1000);
+});
+
+async function myFun(){
+	console.log('Hello 1');
+	await myPromise.then((data) => {console.log(data)});
+	console.log('Hello 3');
+}
+
+//myFun();
+
+//if there is an area that i expect that it can make error(so in normal will stop all system so this is solution)
+try{
+	let myData = [];
+	if(myData.length > 0){
+		console.log(myData);
+	}else{
+		throw Error("Error sdad")
+	}
+console.log("session is not done");
+
+}catch(error){
+	console.log(error);
+}
+
+console.log("session of part of before news exercise done");
