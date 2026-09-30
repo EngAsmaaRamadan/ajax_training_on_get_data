@@ -294,4 +294,4 @@ console.log("session is not done");
 	console.log(error);
 }
 
-console.log("session of part of before news exercise done");
+console.log("session of part of before news exercise  done");
