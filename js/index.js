@@ -295,3 +295,12 @@ console.log("session is not done");
 }
 
 console.log("session of part of before news exercise  done");
+
+function getNewsData(){
+	fetch("https://newsapi.org/v2/everything?q=tesla&from=2026-08-30&sortBy=publishedAt&apiKey=ba9850ad4db741b1bde7c87edf447f77").then(function(res){
+		return res.json();
+	}).then(function(data){
+		console.log(data);
+	});
+}
+getNewsData();
