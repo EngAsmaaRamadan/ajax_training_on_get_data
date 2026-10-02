@@ -295,12 +295,35 @@ console.log("session is not done");
 }
 
 console.log("session of part of before news exercise  done");
-
+//run as a live server from cmd , cd
 function getNewsData(){
-	fetch("https://newsapi.org/v2/everything?q=tesla&from=2026-08-30&sortBy=publishedAt&apiKey=ba9850ad4db741b1bde7c87edf447f77").then(function(res){
+	fetch("https://newsapi.org/v2/everything?q=tesla&from=2026-09-02&sortBy=publishedAt&apiKey=5cd417febc1d46d997979d6e03d6db49").then(function(res){
 		return res.json();
 	}).then(function(data){
 		console.log(data);
 	});
 }
-getNewsData();
+// getNewsData();
+
+async function getNewsDataInShort(){
+	let response = await fetch("https://newsapi.org/v2/everything?q=tesla&from=2026-09-02&sortBy=publishedAt&apiKey=5cd417febc1d46d997979d6e03d6db49");
+	let myData = await response.json();
+	console.log(myData);
+}
+
+// getNewsDataInShort();
+
+async function NewsData(category,lang){
+	let parameters = new URLSearchParams({
+		q:category,
+		language:lang,
+		from:"2026-09-02",
+		sortBy:"publishedAt",
+		apiKey:"5cd417febc1d46d997979d6e03d6db49"
+	});
+	console.log(parameters.toString());//put & instead of :
+	let response = await fetch(`https://newsapi.org/v2/everything?${parameters.toString()}`);
+	let myData = await response.json();
+	console.log(myData);
+}
+NewsData('tesla','ar');
